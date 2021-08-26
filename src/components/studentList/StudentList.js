@@ -3,6 +3,8 @@ import React, { Component } from "react";
 //Bring in link from react-router-dom so we can link to the specific users
 import { Link } from "react-router-dom";
 
+
+//TODO: Add a delete button for this.
 class StudentList extends Component {
 
     //Setup our initial state
@@ -66,6 +68,12 @@ class StudentList extends Component {
         return (
             <section>
                 <h2>Welcome to the directory of students:</h2>
+                <div>
+                  <Link to="/create/student">Add New Student</Link>
+                  <br /><br />
+                </div>
+                
+
                 <table>
                     <thead>
                         <tr>

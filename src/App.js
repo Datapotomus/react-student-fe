@@ -12,6 +12,7 @@ import Welcome from "./components/welcome/Welcome";
 //Import user related components
 import StudentList from "./components/studentList/StudentList";
 import Student from './components/student/Student';
+import CreateStudent from './components/createStudent/CreateStudent';
 
 //Import NoMath (404) Component
 import NoMatch from "./components/noMatch/NoMatch";
@@ -42,6 +43,11 @@ function App() {
           exact
           path="/student/:id"
           component={Student}
+        />
+        <Route
+          exact
+          path="/create/student"
+          component={CreateStudent}
         />
         <Route
           path="*"
