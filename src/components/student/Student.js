@@ -31,7 +31,6 @@ class Student extends Component {
             //on success of turnig the response into JSON (data we can work with), lets add that data to state
             .then((data) => {
             
-
                 //update state with the data from the API causing the page to re-render
                 this.setState({
                     ...data

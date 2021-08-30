@@ -13,9 +13,11 @@ import Welcome from "./components/welcome/Welcome";
 import StudentList from "./components/studentList/StudentList";
 import Student from './components/student/Student';
 import CreateStudent from './components/createStudent/CreateStudent';
+import UpdateStudent from './components/updateStudent/UpdateStudent';
 
 //Import NoMath (404) Component
 import NoMatch from "./components/noMatch/NoMatch";
+
 
 function App() {
   return (
@@ -48,6 +50,11 @@ function App() {
           exact
           path="/create/student"
           component={CreateStudent}
+        />
+        <Route
+          exact
+          path="/update/student/:id"
+          component={UpdateStudent}
         />
         <Route
           path="*"

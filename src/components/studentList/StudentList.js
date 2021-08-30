@@ -40,6 +40,27 @@ class StudentList extends Component {
             });
     }
 
+    handleDelete = (studentId) => {
+      fetch(`http://localhost:5000/api/students/${studentId}`,{
+        method: "DELETE"
+    })
+    //on success of the fetch request, turn the response that came back into JSON
+    .then((response) => response.json())
+    //on success of turnig the response into JSON (data we can work with), lets add that data to state
+    .then((data) => {
+        //update state with the data from the API causing the page to re-render
+        
+        this.setState({
+            students: data
+        });
+    })
+    //handle any errors/failures with getting data from the API
+    .catch((error) => {
+        console.log(error.message)
+    });
+  }
+    
+
     render() {
 
         //using map, loop through the students in state that came back from the API and build an array of <li> elements
@@ -57,7 +78,11 @@ class StudentList extends Component {
                     <td>{student.email}</td>
                     <td>{student.major}</td>
                     <td>{student.ip_address}</td>
-                    <td><Link to={`/student/${student.id}`}>View</Link></td>
+                    <td>
+                      <Link to={`/student/${student.id}`}>View</Link> &nbsp;&nbsp;
+                      <Link to={`/update/student/${student.id}`}>Update</Link> &nbsp;&nbsp;
+                      <button onClick={() => this.handleDelete(student.id)}>Delete</button>
+                    </td>
                 </tr>
             );
         });
@@ -83,6 +108,7 @@ class StudentList extends Component {
                             <th>E-mail</th>
                             <th>Major</th>
                             <th>IP Address</th>
+                            <th>Admin</th>
                         </tr>
                     </thead>
                     <tbody>
